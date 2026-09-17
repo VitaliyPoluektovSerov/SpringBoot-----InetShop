@@ -3,18 +3,16 @@ package org.skypro.model.search;
 import java.util.UUID;
 
 public interface Searchable {
-    String searchTerm();
+    String getSearchTerm();
 
-    String searchType();
+    String getSearchType();
 
     String getName();
 
-    default String getStringRepresentation() {
-        return "Имя объекта: " + searchTerm() + " - Тип объекта: " + searchType();
-    }
+    UUID getId();
 
-    default UUID getId() {
-        return UUID.randomUUID();
+    default String getStringRepresentation() {
+        return "Имя объекта: " + getSearchTerm() + " - Тип объекта: " + getSearchType();
     }
 
 }

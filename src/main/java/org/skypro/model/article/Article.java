@@ -56,13 +56,13 @@ public final class Article implements Searchable {
 
     @Override
     @JsonIgnore
-    public String searchType() {
+    public String getSearchType() {
         return "ARTICLE";
     }
 
     @Override
     @JsonIgnore
-    public String searchTerm() {
+    public String getSearchTerm() {
         return toString();
     }
 }

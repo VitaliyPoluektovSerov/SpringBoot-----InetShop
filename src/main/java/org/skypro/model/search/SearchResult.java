@@ -14,7 +14,7 @@ public final class SearchResult {
     public static SearchResult fromSearchable(Searchable searchable) {
         String id = searchable.getId().toString();
         String name = searchable.getName();
-        String contentType = searchable.searchType();
+        String contentType = searchable.getSearchType();
         return new SearchResult(id, name, contentType);
     }
 
