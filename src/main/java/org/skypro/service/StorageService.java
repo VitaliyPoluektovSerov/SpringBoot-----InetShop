@@ -86,5 +86,8 @@ public class StorageService {
         list.addAll(listArticle.values());
         return list;
     }
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(listProduct.get(id));
+    }
 
 }
