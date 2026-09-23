@@ -2,6 +2,7 @@ package org.skypro.model.basket;
 
 import org.skypro.model.product.Product;
 import org.skypro.service.StorageService;
+import org.skypro.service.exceptions.NoSuchProductException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class BasketService {
         if (storageService.getProductById(id).isPresent()) {
             basket.addProduct(id);
         } else {
-            throw new IllegalArgumentException("Продукт с id " + id + " не найден");
+            throw new NoSuchProductException("Продукт с id " + id + " не найден");
         }
     }
 
@@ -32,7 +33,7 @@ public class BasketService {
                     UUID productId = entry.getKey();
                     int quantity = entry.getValue();
                     Product product = storageService.getProductById(productId)
-                            .orElseThrow(() -> new IllegalArgumentException("Продукт не найден!"));
+                            .orElseThrow(() -> new NoSuchProductException("Продукт не найден!"));
                     return new BasketItem(product, quantity);
                 })
                 .collect(Collectors.toList());
